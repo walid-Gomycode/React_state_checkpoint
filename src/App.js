@@ -1,19 +1,13 @@
 import { Component } from "react";
 import "./App.css";
 import Person from "./components/Person";
-import imgP from "./assets/imgPers.jpg";
+
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //Person object with details
-      person: {
-        fullName: "Walid Embeya",
-        bio: "Full Stack Developer.",
-        imgSrc: imgP,
-        profession: "Software engineer",
-      },
+      // Toggle state for showing/hiding Person component
       shows: false,
     };
   }
@@ -26,7 +20,7 @@ export default class App extends Component {
         <button onClick={this.handleToggle}>
           {this.state.shows ? "Hide" : "Show"}
         </button>
-        {this.state.shows && <Person person={this.state.person} />}
+        {this.state.shows && <Person />}    
       </div>
     );
   }
