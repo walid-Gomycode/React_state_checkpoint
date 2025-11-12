@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+import Person from "./components/Person";
+import imgP from "./assets/imgPers.jpg";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      //Person object with details
+      person: {
+        fullName: "Walid Embeya",
+        bio: "Full Stack Developer.",
+        imgSrc: imgP,
+        profession: "Software engineer",
+      },
+      shows: false,
+    };
+  }
+  handleToggle = () => this.setState({ shows: !this.state.shows });
+  render() {
+    //console.log(this.state.shows)
+    return (
+      <div className="App">
+        <h1>Check State</h1>
+        <button onClick={this.handleToggle}>
+          {this.state.shows ? "Hide" : "Show"}
+        </button>
+        {this.state.shows && <Person person={this.state.person} />}
+      </div>
+    );
+  }
 }
-
-export default App;
